@@ -50,7 +50,6 @@ void Bot::init()
     // init buzzer
     #if USE_BUZZER
     BUZZER.init();
-    //BUZZER.beep();
     BUZZER.playRttl(RTTL_STARTUP);
     #endif
 
@@ -201,11 +200,13 @@ void Bot::programAborted(uint8_t executed, uint8_t total)
 
 void Bot::_go()
 {
+    /*
     // preloaded program
     if (PROGRAM->getMoveCount() == 0 && _total_programs == 0)
     {
         PROGRAM->addProgram(PROGRAM_ESCORNA_GREETING);
     }
+    */
 
     // only with movements
     if (PROGRAM->getMoveCount() > 0)

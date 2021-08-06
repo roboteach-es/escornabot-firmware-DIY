@@ -1,4 +1,6 @@
-
 # platformio
 .pioenvs/
 .vscode/
+
+#others
+.DS_Store

@@ -107,7 +107,7 @@ See LICENSE.txt for details
 #define STEPPERS_MOTOR_LEFT_IN4 6
 
 // step calibration
-#define STEPPERS_STEPS_PER_SECOND 1000
+#define STEPPERS_STEPS_PER_SECOND 1500
 #define STEPPERS_LINE_STEPS 1738
 #define STEPPERS_TURN_STEPS 1024
 
@@ -143,14 +143,14 @@ See LICENSE.txt for details
 //#define BS_ANALOG_WIRES 3
 
 // keypad pin setup (analog input)
-#define BS_ANALOG_PIN A7
+#define BS_ANALOG_PIN A4
 
 // input values for each key pressed (0 if key doesn't exist)
-#define BS_ANALOG_VALUE_UP 512
-#define BS_ANALOG_VALUE_RIGHT 860
-#define BS_ANALOG_VALUE_DOWN 769
-#define BS_ANALOG_VALUE_LEFT 683
-#define BS_ANALOG_VALUE_GO 810
+#define BS_ANALOG_VALUE_UP 220 //512
+#define BS_ANALOG_VALUE_RIGHT 510 //860
+#define BS_ANALOG_VALUE_DOWN 440 //769
+#define BS_ANALOG_VALUE_LEFT 350 //683
+#define BS_ANALOG_VALUE_GO 615 //810
 #define BS_ANALOG_VALUE_RESET 0
 
 #endif // BUTTONS_ANALOG

@@ -1,40 +1,32 @@
+# Arduino firmware for the Escornabot Brivoi (DIY version)
 
-# Arduino firmware for Escornabot
+This is the Arduino firmware to be uploaded to the **Escornabot Brivoi (DIY version)**.
 
-[![Travis Build Status](https://travis-ci.org/escornabot/arduino.svg)](https://travis-ci.org/escornabot/arduino)
+This is a fork of [the orignal version](https://github.com/escornabot/arduino) tuned by default for [this specific keypad](https://github.com/mgesteiro/escornakeypad) and with some [adittional fixes](https://github.com/escornabot/arduino/pull/18) and small changes too.
 
-This is the Arduino firmware to upload to the Escornabot.
-
-__More info about the Escornabot at [escornabot.com][ESC01]__
-
-Please, [open issues here][ISS01] if you find any problem with this firmware. Thank you!
-
-Download the __[last version from here][REL01]
+More info about the Escornabot at **[escornabot.org](https://escornabot.org)**.
 
 
+## Install instructions
 
-## Instructions
+First of all, you need to donwload and uncompress [this firmware zip file](https://github.com/roboteach-es/escornabot-firmware-DIY/archive/refs/heads/stable.zip) somewhere in you computer. Then, follow one of these two alternatives:
 
+### Using the Arduino IDE
 
-### Compilation and upload with Arduino IDE
-
-1. Install the [Arduino IDE][IDE01] 
-
-2. [Copy the right configuration][CON01] to the Escornabot directory.
-
-3. Follow this [guide compilated by @escornafan][GUI01] (in Spanish).
+1. Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software).
+2. Open the `Escornabot.ino` file in the `Escornabot` subfolder (inside the downloaded compressed file) with the **Arduino IDE**.
+3. Choose the appropiate *Board* (=*Arduino Nano*), *Processor* and *Port* (these are specific for you and your computer) in the *Tools* menu, and finally click the upload button.
 
 
+### Using PlatformIO (advanced)
 
-### Compilation and upload with PlatformIO
-
-You only need to install [PlatformIO CLI][PIO01]:
+You'll need to install [PlatformIO CLI](https://platformio.org/install/cli):
 
     pip install -U platformio
 
-There is a project file _platformio.ini_ to compile and upload escornabot
-firmware to the Atmel AVR platform + Arduino framework for Arduino Nano and
-Arduino Micro boards.
+There is already a project file *platformio.ini* to compile and upload the
+firmware to the Atmel AVR platform + Arduino framework for the Arduino Nano
+and Arduino Micro boards.
 
 #### Arduino Nano
 
@@ -45,32 +37,3 @@ Arduino Micro boards.
 
     # compile firmware and upload firmware to an Arduino Micro:
     pio run -e micro -t upload
-
-
-
-## Branches and releases
-
-Escornabot's repository flows through 2 main branches: 
-
-- [stable][STA01]: well-tested firmware that you usually have to work with.
-  Released versions are named with even minor numbers (x.0, x.2, ...).
-- [testing][TES01]: new features and minor bugs pending of testing in deep.
-  Released versions are named with odd minor numbers (x.1, x.3, ...).
-
-Releases are [published ready to download in zip format][REL01].
-
-
-
-<!-- links -->
-[BRI01]: https://github.com/escornabot/arduino/releases/tag/v1.2-brivoi
-[CON01]: ./config
-[ESC01]: http://escornabot.com
-[GUI01]: https://pablorubma.cc/como-instalar-la-programacion-arduino-en-mi-escornabot/
-[IDE01]: https://www.arduino.cc/en/Main/Software
-[ISS01]: https://github.com/escornabot/arduino/issues
-[PIO01]: https://platformio.org/install/cli
-[REL01]: https://github.com/escornabot/arduino/releases
-[STA01]: https://github.com/escornabot/arduino/tree/stable
-[TES01]: https://github.com/escornabot/arduino/tree/testing
-
-
