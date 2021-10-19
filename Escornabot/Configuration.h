@@ -126,9 +126,15 @@ See LICENSE.txt for details
 #endif
 
 // step calibration
-#define STEPPERS_STEPS_PER_SECOND 1250
-#define STEPPERS_LINE_STEPS 1738
-#define STEPPERS_TURN_STEPS 1024
+#define WHEEL_RADIUS 38.0 //mm Brivoi DIY
+#define MOVE_DISTANCE_DEFAULT 100.0 //mm
+#define TURN_DEGREES_DEFAULT 90.0 //°
+#define STEPPERMOTOR_FULLREVOLUTION_STEPS 4096 //number of steps for a full revolution of the axis
+#define WHEEL_CIRCUNFERENCE float(2.0 * PI * WHEEL_RADIUS)
+
+#define STEPPERS_LINE_STEPS int16_t(STEPPERMOTOR_FULLREVOLUTION_STEPS / WHEEL_CIRCUNFERENCE * MOVE_DISTANCE_DEFAULT)
+#define STEPPERS_TURN_STEPS int16_t(STEPPERMOTOR_FULLREVOLUTION_STEPS / 360.0 * TURN_DEGREES_DEFAULT)
+#define STEPPERS_STEPS_PER_SECOND 1000 // 1500 max. with fully charged batteries
 
 #endif
 
@@ -165,11 +171,12 @@ See LICENSE.txt for details
 #define BS_ANALOG_PIN A4
 
 // input values for each key pressed (0 if key doesn't exist)
-#define BS_ANALOG_VALUE_UP 220 //512
-#define BS_ANALOG_VALUE_RIGHT 510 //860
-#define BS_ANALOG_VALUE_DOWN 440 //769
-#define BS_ANALOG_VALUE_LEFT 350 //683
-#define BS_ANALOG_VALUE_GO 615 //810
+// values pre-configured for this keypad -> https://github.com/mgesteiro/escornakeypad
+#define BS_ANALOG_VALUE_UP 220
+#define BS_ANALOG_VALUE_RIGHT 510
+#define BS_ANALOG_VALUE_DOWN 440
+#define BS_ANALOG_VALUE_LEFT 350
+#define BS_ANALOG_VALUE_GO 615
 #define BS_ANALOG_VALUE_RESET 0
 
 #endif // BUTTONS_ANALOG
