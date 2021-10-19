@@ -9,7 +9,7 @@ More info about the Escornabot at **[escornabot.org](https://escornabot.org)**.
 
 ## Install instructions
 
-First of all, you need to donwload and uncompress [this firmware zip file](https://github.com/roboteach-es/escornabot-firmware-DIY/archive/refs/tags/v1.6.2-RT.zip) somewhere in you computer. Then, follow one of these two alternatives:
+First of all, you need to donwload and uncompress [this firmware zip file](https://github.com/roboteach-es/escornabot-firmware-DIY/archive/refs/heads/stable.zip) somewhere in you computer. Then, follow one of these two alternatives:
 
 ### Using the Arduino IDE
 
