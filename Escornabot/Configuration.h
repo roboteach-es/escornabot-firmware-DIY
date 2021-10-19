@@ -32,6 +32,8 @@ See LICENSE.txt for details
 
 // engine to use
 #define ENGINE_TYPE_STEPPERS
+#define STEPPERS_SWAPPED_CABLES false
+#define STEPPERS_DEBUG_COILS false
 
 // button set to use (analog input, digital input)
 #define BUTTONS_ANALOG
@@ -41,7 +43,7 @@ See LICENSE.txt for details
 #define BUTTON_MIN_PRESSED 30
 
 // milliseconds after a button is considered as long pressed
-#define BUTTON_LONG_PRESSED 1000
+#define BUTTON_LONG_PRESSED 800
 
 // put to false to add movements to the program after its execution
 #define PROGRAM_RESET_ALWAYS true
@@ -65,7 +67,7 @@ See LICENSE.txt for details
 #define POV_INITIAL    POV_ESCORNABOT
 
 // bluetooth serial
-#define USE_BLUETOOTH true
+#define USE_BLUETOOTH false
 #define BLUETOOTH_BAUDS 9600
 
 // buzzer
@@ -78,11 +80,11 @@ See LICENSE.txt for details
 #define TONE_FREQ_LEFT 2217
 
 // simple led
-#define USE_SIMPLE_LED false
+#define USE_SIMPLE_LED true
 #define SIMPLE_LED_PIN 13
 
 // keypad leds
-#define USE_KEYPAD_LEDS true
+#define USE_KEYPAD_LEDS false
 #define KEYPAD_LED_PIN_UP A0
 #define KEYPAD_LED_PIN_RIGHT A3
 #define KEYPAD_LED_PIN_DOWN A2
@@ -97,6 +99,9 @@ See LICENSE.txt for details
 #ifdef ENGINE_TYPE_STEPPERS
 
 // stepper pin setup (digital outputs)
+#if !STEPPERS_SWAPPED_CABLES
+
+// YELLOW - ORANGE - RED - PINK - BLUE
 #define STEPPERS_MOTOR_RIGHT_IN1 5
 #define STEPPERS_MOTOR_RIGHT_IN2 4
 #define STEPPERS_MOTOR_RIGHT_IN3 3
@@ -106,8 +111,22 @@ See LICENSE.txt for details
 #define STEPPERS_MOTOR_LEFT_IN3 7
 #define STEPPERS_MOTOR_LEFT_IN4 6
 
+#else
+
+// ORANGE - YELLOW - RED - BLUE - PINK
+#define STEPPERS_MOTOR_RIGHT_IN1 4
+#define STEPPERS_MOTOR_RIGHT_IN2 5
+#define STEPPERS_MOTOR_RIGHT_IN3 2
+#define STEPPERS_MOTOR_RIGHT_IN4 3
+#define STEPPERS_MOTOR_LEFT_IN1 8
+#define STEPPERS_MOTOR_LEFT_IN2 9
+#define STEPPERS_MOTOR_LEFT_IN3 6
+#define STEPPERS_MOTOR_LEFT_IN4 7
+
+#endif
+
 // step calibration
-#define STEPPERS_STEPS_PER_SECOND 1500
+#define STEPPERS_STEPS_PER_SECOND 1250
 #define STEPPERS_LINE_STEPS 1738
 #define STEPPERS_TURN_STEPS 1024
 

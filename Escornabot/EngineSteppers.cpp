@@ -159,7 +159,11 @@ void EngineSteppers::tick(uint32_t micros)
     }
     else
     {
+        #if !STEPPERS_DEBUG_COILS
         delayMicroseconds(1000000 / _config->steps_per_second);
+        #else
+        delay(1000);
+        #endif
     }
 }
 
