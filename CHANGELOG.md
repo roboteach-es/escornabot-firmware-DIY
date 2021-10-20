@@ -1,5 +1,16 @@
-
 # Changelog
+
+## v1.6.3-RT (Oct 20, 2021)
+New features:
+- Support for stepper motors with swapped cables
+- Debug option for stepper motors (watch them pulse slowly)
+- Human-friendly advance and turning configuration
+
+Fixed bugs:
+- RTTTL library parsing/playing
+
+--^^ ROBOteach ^^--------------------------------
+--vv ORIGINAL vv---------------------------------
 
 ## v1.6.2 (Mar 19, 2019)
 
