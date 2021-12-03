@@ -126,14 +126,24 @@ See LICENSE.txt for details
 #endif
 
 // step calibration
-#define WHEEL_RADIUS 38.0 //mm Brivoi DIY
-#define MOVE_DISTANCE_DEFAULT 100.0 //mm
-#define TURN_DEGREES_DEFAULT 90.0 //°
-#define STEPPERMOTOR_FULLREVOLUTION_STEPS 4096 //number of steps for a full revolution of the axis
-#define WHEEL_CIRCUNFERENCE float(2.0 * PI * WHEEL_RADIUS)
+// make sure you measure this values for your own Escornabot
+#define WHEEL_DIAMETER 75.5f //mm Brivoi DIY, wheel diameter
+#define WHEEL_DISTANCE 75.5f //mm Brivoi DIY, separation between the wheels (contact points in the ground)
+// defaults
+#define MOVE_DISTANCE_DEFAULT 100.0f //mm
+#define TURN_DEGREES_DEFAULT 90.0f //°
+// calculations
+// Steppers have a gear ratio of 1:63.7, with 32 steps per turn, using half-stepping -> 63.7 * 32 * 2 = 4076.8
+#define STEPPERMOTOR_FULLREVOLUTION_STEPS 4076.8f //number of steps for a full revolution of the axis
+#define WHEEL_CIRCUNFERENCE float(PI * WHEEL_DIAMETER)
+#define ROTATION_CIRCUNFERENCE float(PI * WHEEL_DISTANCE) // rotation circunference determined by the wheel distance
+#define STEPPERS_STEPS_MM float(STEPPERMOTOR_FULLREVOLUTION_STEPS / WHEEL_CIRCUNFERENCE) // how many steps to move 1 mm
+#define STEPPERS_STEPS_DEG float((ROTATION_CIRCUNFERENCE/360) * STEPPERS_STEPS_MM) // how many steps to rotate the robot 1 degree
+// result values
+#define STEPPERS_LINE_STEPS int16_t(STEPPERS_STEPS_MM * MOVE_DISTANCE_DEFAULT)
+#define STEPPERS_TURN_STEPS int16_t(STEPPERS_STEPS_DEG * TURN_DEGREES_DEFAULT)
 
-#define STEPPERS_LINE_STEPS int16_t(STEPPERMOTOR_FULLREVOLUTION_STEPS / WHEEL_CIRCUNFERENCE * MOVE_DISTANCE_DEFAULT)
-#define STEPPERS_TURN_STEPS int16_t(STEPPERMOTOR_FULLREVOLUTION_STEPS / 360.0 * TURN_DEGREES_DEFAULT)
+// stepping speed
 #define STEPPERS_STEPS_PER_SECOND 1000 // 1500 max. with fully charged batteries
 
 #endif
