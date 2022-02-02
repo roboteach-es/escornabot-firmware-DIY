@@ -25,7 +25,7 @@ See LICENSE.txt for details
 #ifndef _ESCORNABOT_H
 #define _ESCORNABOT_H
 
-#define FIRMWARE_VERSION "v1.6.3-RT"
+#define FIRMWARE_VERSION "v1.6.4-RT"
 
 #include <Arduino.h>
 #include "Configuration.h"

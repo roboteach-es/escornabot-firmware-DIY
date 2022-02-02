@@ -27,6 +27,7 @@ See LICENSE.txt for details
 
 #include "EventListener.h"
 #include "Enums.h"
+#include "Configuration.h"
 
 /**
  * \brief Object instance in order to register as an event listener.
@@ -65,6 +66,8 @@ private:
     GAME_MODE _game_mode = GAME_MODE_GRID_90;
 
     void _next_game_mode();
+
+    bool _resetProgram = PROGRAM_RESET_ALWAYS;
 
 };
 

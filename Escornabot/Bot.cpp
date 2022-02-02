@@ -167,9 +167,7 @@ void Bot::buttonLongReleased(BUTTON button)
 
 void Bot::programFinished()
 {
-    #if PROGRAM_RESET_ALWAYS
-    PROGRAM->clear();
-    #endif
+    if (_resetProgram) PROGRAM->clear();
 
     #if USE_BUZZER
     BUZZER.playRttl(PROGRAM_FINISHED_RTTL);
@@ -191,9 +189,7 @@ void Bot::programFinished()
 
 void Bot::programAborted(uint8_t executed, uint8_t total)
 {
-    #if PROGRAM_RESET_ALWAYS
-    PROGRAM->clear();
-    #endif
+    if (_resetProgram) PROGRAM->clear();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -243,8 +239,9 @@ void Bot::_storeMove(MOVE move)
 
 void Bot::_next_game_mode()
 {
-    // select the next game mode (2 modes currently available)
-    ++_game_mode %= 2;
+    // select the next game mode (3 modes currently available)
+    _game_mode++;
+    if (_game_mode > 2) _game_mode = 0;
 
     switch (_game_mode)
     {
@@ -252,12 +249,21 @@ void Bot::_next_game_mode()
             PROGRAM->setTurnDegrees(90);
             PROGRAM->setAltTurnDegrees(45);
             ENGINE->setSquareDiagonals(true);
+            _resetProgram = PROGRAM_RESET_ALWAYS;
             break;
 
         case GAME_MODE_GRID_60:
             PROGRAM->setTurnDegrees(60);
             PROGRAM->setAltTurnDegrees(120);
             ENGINE->setSquareDiagonals(false);
+            _resetProgram = PROGRAM_RESET_ALWAYS;
+            break;
+
+        case GAME_MODE_NORESET:
+            PROGRAM->setTurnDegrees(90);
+            PROGRAM->setAltTurnDegrees(45);
+            ENGINE->setSquareDiagonals(true);
+            _resetProgram = false;
             break;
     }
 
