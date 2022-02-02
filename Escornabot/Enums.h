@@ -79,7 +79,7 @@ enum
 {
     GAME_MODE_GRID_90 = 0, // squared grid (classical mode)
     GAME_MODE_GRID_60 = 1, // triangled grid
-    GAME_MODE_NORESET = 3, // GAME_MODE_GRID_90 with no program reset
+    GAME_MODE_NORESET = 2, // GAME_MODE_GRID_90 with no program reset
 };
 typedef uint8_t GAME_MODE;
 
