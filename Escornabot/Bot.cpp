@@ -145,6 +145,12 @@ void Bot::buttonLongReleased(BUTTON button)
 
     switch (button)
     {
+        case BUTTON_UP:
+            if (_game_mode == GAME_MODE_NORESET) {
+                PROGRAM->clear();
+            }
+            break;
+
         case BUTTON_RIGHT:
             _storeMove(MOVE_ALT_RIGHT);
             break;
