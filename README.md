@@ -1,10 +1,15 @@
 # Arduino firmware for the Escornabot Brivoi (DIY version)
 
+## GALEGO / CASTELÁN
+Se queres, podes empregar [esta guía paso a paso](https://www.roboteach.es/escornabot-firmware/) para instalar o firmware no teu **Escornabot Brivoi DIY**.
+
+## ENGLISH
 This is the Arduino firmware to be uploaded to the **Escornabot Brivoi (DIY version)**.
 
 This is a fork of [the orignal version](https://github.com/escornabot/arduino) tuned by default for [this specific keypad](https://github.com/mgesteiro/escornakeypad) and with some [adittional fixes](https://github.com/escornabot/arduino/pull/18) and small changes too.
 
 More info about the Escornabot at **[escornabot.org](https://escornabot.org)**.
+
 
 
 ## Install instructions
