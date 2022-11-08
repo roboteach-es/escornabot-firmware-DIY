@@ -25,6 +25,7 @@ See LICENSE.txt for details
 #include "ButtonSetAnalog.h"
 #include "Configuration.h"
 #include <Arduino.h>
+#include "AutoKeypad.h"
 
 #if (BS_ANALOG_WIRES == 2)
 #    define PULLUP_VALUE 990
@@ -34,7 +35,7 @@ See LICENSE.txt for details
 
 //////////////////////////////////////////////////////////////////////
 
-ButtonSetAnalog::ButtonSetAnalog(const Config* config)
+ButtonSetAnalog::ButtonSetAnalog(Config* config)
 {
     this->_config = config;
 }
@@ -43,7 +44,10 @@ ButtonSetAnalog::ButtonSetAnalog(const Config* config)
 
 void ButtonSetAnalog::init()
 {
+    AutoKeypad AK;
+    AK.autoConfig();
     ButtonSet::init();
+    AK.fixConfig(this->_config); // patches the original configuration
     pinMode(_config->pin_button_set, (_config->pullup ? INPUT_PULLUP : INPUT));
     _last_button = BUTTON_NONE;
 }

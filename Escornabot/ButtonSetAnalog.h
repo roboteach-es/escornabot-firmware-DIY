@@ -46,7 +46,7 @@ public:
         int16_t value_button_reset;
     } Config;
 
-    ButtonSetAnalog(const Config* config);
+    ButtonSetAnalog(Config* config);
 
     /**
      * Does the hardware initialization.
@@ -60,9 +60,9 @@ public:
 
 private:
 
-    const Config* _config;
+    Config* _config;
 
-    BUTTON _last_button;
+    BUTTON _last_button = BUTTON_NONE;
 
 };
 

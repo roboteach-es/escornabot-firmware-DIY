@@ -25,7 +25,7 @@ See LICENSE.txt for details
 #ifndef _ESCORNABOT_H
 #define _ESCORNABOT_H
 
-#define FIRMWARE_VERSION "v1.6.5-RT"
+#define FIRMWARE_VERSION "v1.7.0-RT"
 
 #include <Arduino.h>
 #include "Configuration.h"
@@ -50,6 +50,8 @@ See LICENSE.txt for details
         steps_per_second: STEPPERS_STEPS_PER_SECOND,
         line_steps: STEPPERS_LINE_STEPS,
         turn_steps: STEPPERS_TURN_STEPS,
+        max_delta_steps_per_second: STEPPERS_MAX_DELTA_STEPS_PER_SECOND,
+        acceleration_steps: STEPPERS_ACCELERATION_STEPS,
     };
     EngineSteppers ENGINE_INSTANCE (&ENGINE_CONFIG);
     Engine* ENGINE = (Engine*) &ENGINE_INSTANCE;
@@ -76,7 +78,7 @@ See LICENSE.txt for details
 
     // analog button set
     #include "ButtonSetAnalog.h"
-    const ButtonSetAnalog::Config BS_CONFIG = {
+    ButtonSetAnalog::Config BS_CONFIG = {
         pin_button_set: BS_ANALOG_PIN,
         pullup: (BS_ANALOG_WIRES == 3 ? false : true),
         value_button_up: BS_ANALOG_VALUE_UP,

@@ -67,7 +67,7 @@ See LICENSE.txt for details
 #define POV_INITIAL    POV_ESCORNABOT
 
 // bluetooth serial
-#define USE_BLUETOOTH false
+#define USE_BLUETOOTH true
 #define BLUETOOTH_BAUDS 9600
 
 // buzzer
@@ -145,6 +145,9 @@ See LICENSE.txt for details
 
 // stepping speed
 #define STEPPERS_STEPS_PER_SECOND 1000 // 1500 max. with fully charged batteries
+#define STEPPERS_ACCELERATION_STEPS 600
+#define STEPPERS_MAX_DELTA_STEPS_PER_SECOND 1200 // Additional steps above STEPPERS_STEPS_PER_SECOND
+
 
 #endif
 
@@ -182,11 +185,11 @@ See LICENSE.txt for details
 
 // input values for each key pressed (0 if key doesn't exist)
 // values pre-configured for this keypad -> https://github.com/mgesteiro/escornakeypad
-#define BS_ANALOG_VALUE_UP 220
-#define BS_ANALOG_VALUE_RIGHT 510
-#define BS_ANALOG_VALUE_DOWN 440
-#define BS_ANALOG_VALUE_LEFT 350
-#define BS_ANALOG_VALUE_GO 615
+#define BS_ANALOG_VALUE_UP 230
+#define BS_ANALOG_VALUE_RIGHT 550
+#define BS_ANALOG_VALUE_DOWN 470
+#define BS_ANALOG_VALUE_LEFT 400
+#define BS_ANALOG_VALUE_GO 600
 #define BS_ANALOG_VALUE_RESET 0
 
 #endif // BUTTONS_ANALOG

@@ -48,6 +48,8 @@ public:
         int16_t steps_per_second;
         int16_t line_steps;
         int16_t turn_steps;
+        int16_t max_delta_steps_per_second;
+        int16_t acceleration_steps;
 
     } Config;
 
@@ -73,6 +75,7 @@ private:
 
     int16_t _movement_steps_r;
     int16_t _movement_steps_l;
+    int16_t _movement_total_steps;
 };
 
 

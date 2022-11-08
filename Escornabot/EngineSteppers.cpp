@@ -44,6 +44,7 @@ EngineSteppers::EngineSteppers(const Config* cfg)
 
     _movement_steps_r = 0;
     _movement_steps_l = 0;
+    _movement_total_steps = 0;
 
     _pattern_index_left = 0;
     _pattern_index_right = 0;
@@ -79,6 +80,7 @@ void EngineSteppers::turn(int16_t degrees)
 
     _movement_steps_r = steps;
     _movement_steps_l = steps;
+    _movement_total_steps = abs(_movement_steps_r);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -87,6 +89,7 @@ void EngineSteppers::moveStraight(float advance_units)
 {
     _movement_steps_r = _config->line_steps * advance_units;
     _movement_steps_l = -_movement_steps_r;
+    _movement_total_steps = abs(_movement_steps_r);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -160,7 +163,18 @@ void EngineSteppers::tick(uint32_t micros)
     else
     {
         #if !STEPPERS_DEBUG_COILS
-        delayMicroseconds(1000000 / _config->steps_per_second);
+        // Constant speed
+        //delayMicroseconds(1000000 / _config->steps_per_second);
+
+        // Asymmetrical linear acceleration and deceleration ramp (decelerate twice faster than accelerate)
+        int16_t accelerated_steps_per_second = _movement_total_steps - abs(_movement_steps_r);
+        accelerated_steps_per_second = _config->steps_per_second + (
+            accelerated_steps_per_second > _config->acceleration_steps && _movement_total_steps > accelerated_steps_per_second / 2 ?
+                _config->max_delta_steps_per_second :
+                accelerated_steps_per_second * (_config->max_delta_steps_per_second / _config->acceleration_steps)
+        );
+        delayMicroseconds(1000000 / (accelerated_steps_per_second));
+
         #else
         delay(1000);
         #endif
