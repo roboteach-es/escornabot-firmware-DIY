@@ -6,10 +6,23 @@ Se queres, podes empregar [esta guía paso a paso](https://www.roboteach.es/esco
 ## ENGLISH
 This is the Arduino firmware to be uploaded to the **Escornabot Brivoi (DIY version)**.
 
-This is a fork of [the orignal version](https://github.com/escornabot/arduino) tuned by default for [this specific keypad](https://github.com/mgesteiro/escornakeypad) and with some [adittional fixes](https://github.com/escornabot/arduino/pull/18) and small changes too.
+This is a fork of [the orignal version](https://github.com/escornabot/arduino) pre-configured by default for [this specific keypad](https://github.com/mgesteiro/escornakeypad) and with some [adittional fixes](https://github.com/escornabot/arduino/pull/18) and new features too.
 
 More info about the Escornabot at **[escornabot.org](https://escornabot.org)**.
 
+## [NEW] &nbsp;Keypad Auto-Configuration
+This version of our **ROBOteach firmware** (**v1.7.0-RT** or later) includes a new feature long awaited, the possibility **to automatically configure the keypad**: tune your Escornabot to your specific [analog]keypad, and forget about it (the values will be permanently stored and retrieved during the start-up). No need to touch the *source-code* (if you don't want 😉).
+
+These are the steps to configure it:
+
+1. **Turn-off** the Escornabot.
+2. While **pressing any** of the keypad keys, turn it on again until you start hearing the Escornabot **beeping four times**: this indicates that it is in the *keypad configuration state*.
+3. Now click all the keypad keys **in the following order**: *UP*, *LEFT*, *GO*, *RIGHT* and *DOWN*. You'll hear a beep everytime you press one.
+4. After that, you'll hear the normal start-up sound: **everything is done!**
+
+If you make any mistake or anything happens during the process, don't worry, you can re-start it all over again: quick & easy.
+
+This procedure should be done **only once whith fresh batteries** in place. The configuration values are stored in the EEPROM and reloaded everytime the Escornabot is turned on. Don't abuse this feature, e.g. when the baterries are low, as it won't help and may even damage the EEPROM (persistent memory), that has limited writing cycles.
 
 
 ## Install instructions
