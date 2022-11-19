@@ -30,6 +30,9 @@ See LICENSE.txt for details
 ///// general configuration
 //////////////////////////////////////////////////////////////////////
 
+// use simple mode: no long-presses
+#define SIMPLE_MODE false
+
 // engine to use
 #define ENGINE_TYPE_STEPPERS
 #define STEPPERS_SWAPPED_CABLES false

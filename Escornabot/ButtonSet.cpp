@@ -72,10 +72,14 @@ void ButtonSet::released(BUTTON button)
 
         if (pressed_millis > BUTTON_MIN_PRESSED)
         {
+            #if SIMPLE_MODE
+            EVENTS->indicateButtonReleased(button + 1);
+            #else
             if (pressed_millis < BUTTON_LONG_PRESSED)
             {
                 EVENTS->indicateButtonReleased(button + 1);
             }
+            #endif
 
             _button_statuses[button] = 0;
         }
@@ -88,6 +92,7 @@ void ButtonSet::tick(uint32_t micros)
 {
     _current_millis = micros / 1000;
 
+    #if !SIMPLE_MODE
     // raise long-pressed events
     for (int b = 0; b < 6; b++)
     {
@@ -101,6 +106,7 @@ void ButtonSet::tick(uint32_t micros)
             }
         }
     }
+    #endif
 
     scanButtons();
 }
