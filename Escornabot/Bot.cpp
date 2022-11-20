@@ -164,7 +164,9 @@ void Bot::buttonLongReleased(BUTTON button)
             break;
 
         case BUTTON_GO:
+            #if !MODE_1_ONLY
             _next_game_mode();
+            #endif
             break;
     }
 }
