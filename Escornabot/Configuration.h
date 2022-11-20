@@ -33,6 +33,9 @@ See LICENSE.txt for details
 // use simple mode: no long-presses
 #define SIMPLE_MODE false
 
+// use only mode-1
+#define MODE_1_ONLY false
+
 // engine to use
 #define ENGINE_TYPE_STEPPERS
 #define STEPPERS_SWAPPED_CABLES false
